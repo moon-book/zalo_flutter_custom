@@ -78,25 +78,25 @@ class ZaloFlutter {
   /// * Authenticate (with app or webview)
   /// * More info Android: https://developers.zalo.me/docs/sdk/android-sdk/dang-nhap/dang-nhap-post-6027
   /// * More info Ios: https://developers.zalo.me/docs/sdk/ios-sdk/dang-nhap/dang-nhap-post-6006
-  static Future<Map<dynamic, dynamic>?> loginAnroidWithTimeout({
-    String? refreshToken,
-    Map<String, dynamic> externalInfo = const <String, dynamic>{},
-  }) async {
-    final String codeVerifier = ZaloFlutter._getCodeVerifier();
-    final String codeChallenge = ZaloFlutter._getCodeChallenge(codeVerifier);
-    final Map<dynamic, dynamic>? rs = await channel.invokeMethod<Map<dynamic, dynamic>?>(
-      'login',
-      <String, dynamic>{
-        'codeVerifier': codeVerifier,
-        'codeChallenge': codeChallenge,
-        'extInfo': externalInfo,
-        'refreshToken': refreshToken,
-      },
-    ).setTimeout(_timeout);
-    return rs;
-  }
+  // static Future<Map<dynamic, dynamic>?> loginAnroidWithTimeout({
+  //   String? refreshToken,
+  //   Map<String, dynamic> externalInfo = const <String, dynamic>{},
+  // }) async {
+  //   final String codeVerifier = ZaloFlutter._getCodeVerifier();
+  //   final String codeChallenge = ZaloFlutter._getCodeChallenge(codeVerifier);
+  //   final Map<dynamic, dynamic>? rs = await channel.invokeMethod<Map<dynamic, dynamic>?>(
+  //     'login',
+  //     <String, dynamic>{
+  //       'codeVerifier': codeVerifier,
+  //       'codeChallenge': codeChallenge,
+  //       'extInfo': externalInfo,
+  //       'refreshToken': refreshToken,
+  //     },
+  //   ).setTimeout(_timeout);
+  //   return rs;
+  // }
 
-  static Future<Map<dynamic, dynamic>?> loginIosWithoutTimeout({
+  static Future<Map<dynamic, dynamic>?> login({
     String? refreshToken,
     Map<String, dynamic> externalInfo = const <String, dynamic>{},
   }) async {
